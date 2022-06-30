@@ -106,7 +106,7 @@ def hakkimizda():
 
 @app.route('/rp_nedir')
 @login_required
-def rpnedir():
+def rp_nedir():
     return render_template("rp_nedir.html")
 
 
