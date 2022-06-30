@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+  <a href="/">
+  <a class="navbar-brand" href="/"><span class="iconify" data-icon="simple-line-icons:chemistry" data-inline="false"></span> Kimya Forum</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
+    <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="iconify" data-icon="ic:sharp-school" data-inline="false"></span>  Sınıflar
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/9sinif">9. sınıf</a>
+          <a class="dropdown-item" href="/10sinif">10. sınıf</a>
+          <a class="dropdown-item" href="/11sinif">11. sınıf</a>
+          <a class="dropdown-item" href="/12sinif">12. sınıf</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/TYT">TYT</a>
+          <a class="dropdown-item" href="/AYT">AYT</a>
+        </div>
+      </li>
+    
+    
+
+      <li class="nav-item active">
+        <a class="nav-link" href="/rp_nedir?"><span class="iconify" data-icon="fe:question" data-inline="false"></span> Soru sor <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item disabled">
+        <a class="nav-link" href="hakkimizda">Hakkımda <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+        
+        
+        <ul class="navbar-nav ml-auto">
+        {% if session["logged_in"] %}
+                  <li class="nav-item active">
+                    <a href="{{ url_for('cikis') }}" class="btn btn-light" role="button" aria-pressed="true">Çıkış Yap</a>
+                  </li>
+        {% else %}
+                  <li class="nav-item active">
+                    <a href="/giris" class="btn btn-light" role="button" aria-pressed="true">Giriş Yap</a>
+                  </li>&nbsp;
+
+                  <li class="nav-item active">
+                    <a href="/kayit" class="btn btn-light" role="button" aria-pressed="true">Kayıt Ol</a>
+                  </li>&nbsp;
+        {% endif %}
+        </ul>
+
+
+
+
+
+
+
+  </div>
+</nav>

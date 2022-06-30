@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block body %}
+
+<div class="jumbotron"> 
+    <div class="sidenav">
+         <div class="login-main-text">
+            <h2>Giriş Yap</h2>
+            <hr/>
+         </div>
+      </div>
+      <div class="main">
+         <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+               <form action="/giris" method="post">
+                  <div class="form-group">
+
+                     {{ form.hidden_tag() }}
+                     {{ wtf.form_field(form.username) }}  
+                     {{ wtf.form_field(form.password) }}
+                     {{ wtf.form_field(form.remember) }}
+                  
+                  </div>
+
+                  <button type="submit" class="d-inline p-2 btn btn-secondary">Giriş Yap</button>
+                  <div class="d-inline p-2">Eğer bir hesabın yoksa <a href='/kayit'>buradan</a> kayıt olabilirsin.
+                  </div>
+                  
+               </form>
+            </div>
+         </div>
+      </div>
+</div>
+{% endblock body %}
+
+{% block title %}
+Giriş
+{% endblock title %}

@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block body %}
+<div class="jumbotron"> 
+    <div class="sidenav">
+         <div class="login-main-text">
+            <h2>Kayıt ol</h2>
+            <hr/>
+         </div>
+      </div>
+      <div class="main">
+         <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+               <form action="/kayit" method="post">
+                  <div class="form-group">
+               
+                     
+                     {{ form.hidden_tag() }}
+                     {{ wtf.form_field(form.username) }} 
+                     {{ wtf.form_field(form.email) }}
+                     {{ wtf.form_field(form.password) }} <br>
+
+                  <button type="submit" class="btn btn-secondary mt-0" >Kayıt ol</button>
+               </form>
+            </div>
+         </div>
+      </div>
+</div>
+{% endblock body %}
+
+{% block title %}
+Kayıt
+{% endblock title %}
