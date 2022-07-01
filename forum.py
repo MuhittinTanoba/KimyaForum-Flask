@@ -56,15 +56,22 @@ def kayit():
     if "logged_in" in session:
         flash("Zaten giriş yapmışsınız.","danger")
         return redirect(url_for("forum"))
+    
     if form.validate_on_submit():
-        hashed_password = generate_password_hash(form.password.data, method="sha256")
-        yeniveri = Bilgiler(username = form.username.data, email = form.email.data, password = hashed_password )
-        db.session.add(yeniveri)
-        db.session.commit()
+        user = Bilgiler.query.filter_by(username=form.username.data).first()
+        mail_check = Bilgiler.query.filter_by(email=form.email.data).first()
+        if user or mail_check:
+            flash("Kullanıcı adı veya mail adresi daha önce kullanılmış.","danger")
+            redirect(url_for("kayit"))
+        else:
+            hashed_password = generate_password_hash(form.password.data, method="sha256")
+            yeniveri = Bilgiler(username = form.username.data, email = form.email.data, password = hashed_password )
+            db.session.add(yeniveri)
+            db.session.commit()
 
 
-        flash("Başarıyla kayıt oldunuz, giriş yapabilirsiniz.", "success")
-        return redirect(url_for('girisyap'))
+            flash("Başarıyla kayıt oldunuz, giriş yapabilirsiniz.", "success")
+            return redirect(url_for('girisyap'))
     
     
     return render_template("kayit.html", form=form)
